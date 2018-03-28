@@ -11,7 +11,9 @@ class App extends Component {
      <div>
 	<h2 className = "jumbotron jumbotron-fluid text-center"> "Richard's" blog</h2>
 	
-		<StatArt className="rounded" />
+
+
+	<StatArt className="rounded" />
 	
 	 </div>
     );
