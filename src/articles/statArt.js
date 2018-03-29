@@ -16,11 +16,12 @@ const articleElements =articles.map((article)=>
 
 		<div className="card-body">
 			<section>{article.text}</section>
-		</div>
 		
-		<div className="container">
-			<h3> Photo</h3>
-  <DemoCarousel imgsrc={puppy}/> {/*это чисто проверить, т.к. нужно придумать как заливать туда картинки , они ж разные должны быть,а импортить одно и то же-тупизм*/}
+			<div className="container">
+				<h3> Photo</h3>
+				<DemoCarousel imgsrc={puppy}/> {/*это чисто проверить, т.к. нужно придумать как заливать туда картинки , они ж разные должны быть,а импортить одно и то же-тупизм*/}
+			</div>
+		<button type="button" class="btn btn-info btn-sm float-right">Minimize</button>
 		</div>
 		<h6 className="card-subtitle ">creation date: {(new Date(article.date)).toDateString()}</h6>
 	</div>

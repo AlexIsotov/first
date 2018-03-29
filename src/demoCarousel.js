@@ -11,7 +11,7 @@ import pig2 from './pic/28.jpg';
 export class DemoCarousel extends Component {
     render() {
         return (
-            <Carousel  autoPlay={true} interval={4750} emulateTouch={true} infiniteLoop={true} >
+            <Carousel  autoPlay={true} interval={4750} emulateTouch={true} infiniteLoop={true}  >
                 <div >
                     <img src={this.props.imgsrc} alt='firstSlide' style={{width:'75%'}}/>
                    
@@ -30,7 +30,7 @@ export class DemoCarousel extends Component {
                 </div>
 				<div >
                     <img src={pig2} alt='5Slide' style={{width:'75%'}}/>
-                    <p className="legend">End </p>
+						{/*  <p className="legend">End </p>*/}
                 </div>
             </Carousel>
         );
