@@ -35,7 +35,8 @@ return (
 		</div>
 
 		<div className="card-body" >
-			<button type="button" className="btn btn-info btn-sm float-right" onClick={this.minimizeClick}>
+			<button type="button" className="btn btn-info btn-sm float-right" onClick={this.minimizeClick}
+			data-toggle="tooltip" data-placement="right" title="Click to open/close">
 				{(this.state.minimized === false?  'Open':'Minimize' )}
 			</button>
 				{(this.state.minimized === false?  '' : myArticleBody)}

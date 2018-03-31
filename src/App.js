@@ -8,8 +8,9 @@ class App extends Component {
  
 
     return (
-     <div>
-	<h2 className = "jumbotron jumbotron-fluid text-center"> "Richard's" blog</h2>
+     <div >
+	 
+	<h1 className = "display-1 jumbotron jumbotron-fluid text-center"> Richard's blog </h1>
 	
 	<Articles className="rounded" />
 	
