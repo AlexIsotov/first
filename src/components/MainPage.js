@@ -15,7 +15,7 @@ export class MainPage extends Component {
 	</div>
 	
 	<footer className="page-footer ">
-		<div className="footer-copyright py-3 text-center">	All rights reserved. 2k18</div>
+		<div className="py-3 text-center">	All rights reserved. 2k18</div>
 	</footer>
 </div>
 )

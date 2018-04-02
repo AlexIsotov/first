@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import {DemoCarousel} from '../demoCarousel';
-import puppy from '../pic/24.jpg';
 
 export class StatToArt extends Component {
  constructor (props){
@@ -21,11 +19,13 @@ export class StatToArt extends Component {
 render() {
 	const {article, isOpen,onButtonClick}=this.props;
 	const myArticleBody =(
+	<div>
 		<div className="container">
 		<section>{article.text}</section>
-		<h3> Photo</h3>
-		<DemoCarousel imgsrc={puppy}/> {/*это чисто проверить, т.к. нужно придумать как заливать туда картинки , они ж разные должны быть,а импортить одно и то же-тупизм*/}
-	</div> )
+	</div>
+		<h6 className="card-subtitle ">creation date: {(new Date(article.date)).toDateString()}</h6>
+	</div>
+	)
 
 return (
 	<div className="card mx-auto">
@@ -42,12 +42,10 @@ return (
 				{(this.state.minimized === false?  '' : myArticleBody)}
 			 
 		</div>
-		<h6 className="card-subtitle ">creation date: {(new Date(article.date)).toDateString()}</h6>
+		
 	</div>
 
 )	
-    
-    
     
   }
 }
