@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {NavBar} from './navBar';
+import{Footer} from './Footer.js';
 import {Articles} from '../articles/Articles';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -14,9 +15,7 @@ export class MainPage extends Component {
 		<Articles className="rounded" />
 	</div>
 	
-	<footer className="page-footer ">
-		<div className="py-3 text-center">	All rights reserved. 2k18</div>
-	</footer>
+	<Footer />
 </div>
 )
   }
