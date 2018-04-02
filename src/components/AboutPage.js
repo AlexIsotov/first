@@ -6,7 +6,7 @@ export class AboutPage extends Component {
  
     return (
 <div>
-		<h2 className="jumbotron text-center"> Created by Richard the Dog aka Gangsta doog</h2>
+		<h2 className="alert alert-success text-center"> Created by Richard the Dog aka Gangsta doog</h2>
 </div>
 )
   }
