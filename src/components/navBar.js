@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-
-
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+import './styles/styleNavBar.css';
 export class NavBar extends Component {
+  
   render() {
- 
+
 
     return (
-	<div>
-		<nav className="navbar">
-		
+	
+	
+		<nav className="startNavbar">
+		<Link to="/"> Home</Link>
+		<Link to="/pic"> Pictures</Link>
+		<Link to="/about"> About</Link>
+		<Link to="/links"> Links</Link>
 
-		 <div className="container-fluid">
-      <ul className="nav navbar-nav">
-      <li className="active"><a href="#">Home</a></li>
-      <li><a href="#">Page 1</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
-    </ul>
-  </div>
+	
 		</nav>
-	</div>
+	
+	
 		);
   }
 }
