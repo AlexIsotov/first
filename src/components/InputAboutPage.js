@@ -19,7 +19,7 @@ export class InputAboutPage extends Component {
    
   onAgeChange = e=> {
 	  let val = e.target.value;
-	  val<2? this.setState({age: val, ageValid:false,ageMessage:" You're to young to say hi!!!"}):val>110 ? this.setState({age: val, ageValid:false, ageMessage:" Are you zombie ??! "}):this.setState({age: val, ageValid:true, ageMessage:" Your age is OK!"});
+	  val<0? this.setState({age: val, ageValid:false,ageMessage:" Wrong age!!!"}):val<2? this.setState({age: val, ageValid:false,ageMessage:" You're to young to say hi!!!"}):val>110 ? this.setState({age: val, ageValid:false, ageMessage:" Are you zombie ??! "}):this.setState({age: val, ageValid:true, ageMessage:" Your age is OK!"});
   
   }
   onNameChange = e=> {
