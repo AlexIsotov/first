@@ -3,6 +3,7 @@ import {MainPage} from './components/MainPage.js';
 import {AboutPage} from './components/AboutPage.js';
 import {NotFoundPage} from './components/NotFoundPage.js';
 import {PicturesPage} from './components/PicturesPage.js';
+import {LoginPage} from './components/LoginPage.js';
 import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
 		<Switch>
 		<Route exact path="/" component={MainPage} />
 		<Route path= "/about" component={AboutPage} />
+		<Route path= "/login" component={LoginPage} />
 		<Route path= "/pic" component={PicturesPage} />
 		<Route component={NotFoundPage} />
 		</Switch>

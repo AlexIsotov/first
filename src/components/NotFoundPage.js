@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 
 export class NotFoundPage extends Component {

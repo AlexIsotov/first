@@ -32,7 +32,7 @@ export class InputAboutPage extends Component {
   }
   render() {
  let nameColor=this.state.nameValid===true?"green":"tomato";
- let ageColor=this.state.nameValid===true?"green":"tomato";
+ let ageColor=this.state.ageValid===true?"green":"tomato";
     return (
 <div className="formAbout">
 	<form  onSubmit={this.onclickInfo}>
