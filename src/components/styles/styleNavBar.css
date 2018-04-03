@@ -1,7 +1,8 @@
 .startNavbar{
 	margin:0 auto;
-	width: 25%;
+	width: 23%;
 	word-spacing:30px;
+	
 	
 }
 .page-footer{
@@ -10,4 +11,10 @@
 .jumbotron {
 word-spacing:10px;
 
+}
+.formAbout{
+	margin:0 auto;
+	width: 32%;
+	padding-top:20px;
+	
 }
