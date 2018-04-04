@@ -7,7 +7,7 @@ class Callback extends Component {
 
     return (
       <div>
-       <h1>loading... </h1>
+       <h1 className="text-center">Loading... </h1>
       </div>
     );
   }
