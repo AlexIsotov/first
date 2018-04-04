@@ -6,8 +6,8 @@ export class Footer extends Component {
   render() {
  
     return (
-<div>
-		<footer className="page-footer ">
+<div className="">
+		<footer className="page-footer">
 			<div className="py-3 text-center">	All rights reserved. 2k18</div>
 		</footer>
 </div>

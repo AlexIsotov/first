@@ -22,8 +22,7 @@ goTo(route) {
 	
 	
     return (
-		<Navbar fluid >
-          <Navbar.Header >
+		<div className="fixed-top">
             {
               !isAuthenticated() && (
                   <Button
@@ -46,8 +45,7 @@ goTo(route) {
                   </Button>
                 )
             }
-          </Navbar.Header>
-        </Navbar>
+          </div>
 	);
   }
 }

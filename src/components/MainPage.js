@@ -12,19 +12,22 @@ export class MainPage extends Component {
 	  this.props.auth.login();
   }
   render() {
- const{isAuthenticated} = this.props.auth;
-    return (
+const{isAuthenticated} = this.props.auth;
+    
+	return (
 <div>
-<App auth={auth}/>
+<div className="jumbotron">
+	<App  auth={auth}/>
+	<h1 className = "display-1 text-center"> Richard's blog
+	</h1>
+</div>
+<NavBar />
+
 {isAuthenticated()&&(
 	<div>
-		<h1 className = "display-1 jumbotron jumbotron-fluid text-center"> Richard's blog </h1>
-		<NavBar />
 		<Articles className="rounded" />
 	</div>
-	
-
-)}
+	)}
 {!isAuthenticated()&&(
 <h4 className="text-center">You are not logged in! Please{' '}
 	<a onClick={this.login.bind(this)} >
