@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './styles/styleNavBar.css';
 export class NavBar extends Component {
   
@@ -10,7 +10,7 @@ export class NavBar extends Component {
 	
 	
 		<nav className="startNavbar">
-		<Link to="/"> Home</Link>
+		<Link to="/home"> Home</Link>
 		<Link to="/pic"> Pictures</Link>
 		<Link to="/about"> About</Link>
 		<Link to="/links"> Links</Link>

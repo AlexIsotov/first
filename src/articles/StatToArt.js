@@ -11,13 +11,12 @@ export class StatToArt extends Component {
   
 			minimizeClick=(openArticle) => { 											
 			
-			{/* button chek state used to minimize posts*/}
 				this.setState({minimized: this.state.minimized === false ? true : false});
 				this.setState({openArticle: openArticle});
 				} 
 				
 render() {
-	const {article, isOpen,onButtonClick}=this.props;
+	const {article}=this.props;
 	const myArticleBody =(
 	<div>
 		<div className="container">

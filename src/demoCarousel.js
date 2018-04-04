@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Carousel } from 'react-responsive-carousel';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
-
 import racoon from './pic/25.jpg';
 import pig from './pic/26.jpg';
 import pig1 from './pic/27.jpg';

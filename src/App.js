@@ -1,28 +1,53 @@
 import React, { Component } from 'react';
-import {MainPage} from './components/MainPage.js';
-import {AboutPage} from './components/AboutPage.js';
-import {NotFoundPage} from './components/NotFoundPage.js';
-import {PicturesPage} from './components/PicturesPage.js';
-import {LoginPage} from './components/LoginPage.js';
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
+import {MainRoutes} from './MainRoutes.js';
+import Auth from './components/Auth.js';
+import { Navbar, Button } from 'react-bootstrap';
+import './App.css';
 
-class App extends Component {
+export class App extends Component {
+goTo(route) {
+    this.props.history.replace(`/${route}`)
+  }
+
+  login() {
+    this.props.auth.login();
+  }
+
+  logout() {
+    this.props.auth.logout();
+  }
+
   render() {
-
-    return (
+	const { isAuthenticated } = this.props.auth;  
 	
-    <div >
-		<BrowserRouter>
-		<Switch>
-		<Route exact path="/" component={MainPage} />
-		<Route path= "/about" component={AboutPage} />
-		<Route path= "/login" component={LoginPage} />
-		<Route path= "/pic" component={PicturesPage} />
-		<Route component={NotFoundPage} />
-		</Switch>
-		</BrowserRouter>
-	</div>
-    
+	
+    return (
+		<Navbar fluid >
+          <Navbar.Header >
+            {
+              !isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin btn-sm"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
+                  </Button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <Button
+                    bsStyle="primary"
+                    className="btn-margin btn-sm"
+                    onClick={this.logout.bind(this)}
+                  >
+                    Log Out
+                  </Button>
+                )
+            }
+          </Navbar.Header>
+        </Navbar>
 	);
   }
 }

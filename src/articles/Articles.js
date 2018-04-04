@@ -23,6 +23,3 @@ return (
 }
 
 export default Articles;
-{/*isOpen = {this.state.openArticle === article.id}*/}
-{/*, article.id)}
-			this.setState({openArticle: this.state.openArticle === openArticle ? null : openArticle});*/}
