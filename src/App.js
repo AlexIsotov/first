@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {MainRoutes} from './MainRoutes.js';
-import Auth from './components/Auth.js';
-import { Navbar, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './App.css';
 
 export class App extends Component {

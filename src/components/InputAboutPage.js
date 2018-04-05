@@ -36,7 +36,7 @@ export class InputAboutPage extends Component {
     return (
 <div className="formAbout">
 	<form  onSubmit={this.onclickInfo}>
-		<input type="text"placeholder="Enter your name" value={this.state.name} onChange={this.onNameChange} style={{borderColor:nameColor}}/>
+		<input type="text" placeholder="Enter your name" value={this.state.name} onChange={this.onNameChange} style={{borderColor:nameColor}}/>
 		<input type="number" placeholder="Enter your age" value={this.state.age} onChange={this.onAgeChange} style={{borderColor:ageColor}}/>
 		<input className="btn btn-primary" type="submit" value="say HI" />
 		<p className="alert alert-warning text-center">{this.state.nameMessage}  {this.state.ageMessage}</p>

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import {MainPage} from './components/MainPage.js';
 import {AboutPage} from './components/AboutPage.js';
-import {NotFoundPage} from './components/NotFoundPage.js';
 import {PicturesPage} from './components/PicturesPage.js';
 import {Router, Route, Switch} from 'react-router-dom';
 import Callback from './components/Callback';
 import Auth from './components/Auth.js';
-import App from './App';
 import history from './components/history';
 const auth = new Auth();
 
