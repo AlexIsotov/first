@@ -24,7 +24,7 @@ export class InputAboutPage extends Component {
   }
   onNameChange = e=> {
 	  let val=e.target.value;
-	  val.length>2?this.setState({name:val, nameValid:true,nameMessage:"Name is OK !"}):this.setState({name:val, nameValid:false,nameMessage:"Too short name!"}); 
+	  val.length<1?this.setState({name:val, nameValid:false,nameMessage:"Please enter your name !"}):val.length>=2?this.setState({name:val, nameValid:true,nameMessage:"Name is OK !"}):this.setState({name:val, nameValid:false,nameMessage:"Too short name !"}); 
   }
   onclickInfo = e =>{
 	  e.preventDefault();
