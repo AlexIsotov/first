@@ -19,12 +19,12 @@ export class MainRoutes extends Component {
   return (
     <Router history={history} >
       <Switch>
-        <Route exact path="/" render={(props) => <MainPage auth={auth} {...props} />} />
+        <Route exact path="/" render={(props) => {handleAuthentication(props); return <MainPage auth={auth} {...props} />}} />
         <Route path="/home" render={(props) => <MainPage auth={auth} {...props} />} />
 		<Route path="/about" render={(props) => <AboutPage  />} />
 		<Route path="/pic" render={(props) => <PicturesPage auth={auth} {...props} />} />
        
-		<Route path="/callback" render={(props) => {
+		<Route path="/links" render={(props) => {
           handleAuthentication(props);
           return <Callback {...props} /> 
         }}/>

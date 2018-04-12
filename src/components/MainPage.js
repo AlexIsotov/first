@@ -16,10 +16,9 @@ const{isAuthenticated} = this.props.auth;
     
 	return (
 <div>
-<div className="jumbotron">
+<div className="jumbotron m-0">
 	<App  auth={auth}/>
-	<h1 className = "display-1 text-center"> Richard's blog
-	</h1>
+	<h1 className = "display-1 text-center"> Richard blog</h1>
 </div>
 <NavBar />
 

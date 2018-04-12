@@ -5,7 +5,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
     domain: 'maxmyd.auth0.com',
     clientID: 'F92Ql33DSWRRsFuqzjRPmoaKh7x90x1v',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'http://localhost:3000',
     audience: 'https://maxmyd.auth0.com/userinfo',
     responseType: 'token id_token',
     scope: 'openid'
@@ -25,9 +25,9 @@ constructor() {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/home');
+        history.replace('/');
       } else if (err) {
-        history.replace('/home');
+        history.replace('/');
         console.log(err);
       }
     });
@@ -40,7 +40,7 @@ constructor() {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   logout() {
@@ -49,7 +49,7 @@ constructor() {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   isAuthenticated() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import './styles/styleNavBar.css';
+import {NavLink, Router} from 'react-router-dom';
+import {Navbar} from 'reactstrap';
+
 export class NavBar extends Component {
   
   render() {
@@ -9,14 +10,12 @@ export class NavBar extends Component {
     return (
 	
 	
-		<nav className="startNavbar">
-		<Link to="/home"> Home</Link>
-		<Link to="/pic"> Pictures</Link>
-		<Link to="/about"> About</Link>
-		<Link to="/links"> Links</Link>
-
-	
-		</nav>
+		<Navbar >
+		<NavLink to="/home"> Home</NavLink>
+		<NavLink to="/pic"> Pictures</NavLink>
+		<NavLink to="/about"> About</NavLink>
+		<NavLink to="/links"> Links</NavLink>
+		</Navbar>
 	
 	
 		);

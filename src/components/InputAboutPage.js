@@ -35,9 +35,9 @@ export class InputAboutPage extends Component {
  let ageColor=this.state.ageValid===true?"green":"tomato";
     return (
 <div className="formAbout">
-	<form  onSubmit={this.onclickInfo}>
-		<input type="text" placeholder="Enter your name" value={this.state.name} onChange={this.onNameChange} style={{borderColor:nameColor}}/>
-		<input type="number" placeholder="Enter your age" value={this.state.age} onChange={this.onAgeChange} style={{borderColor:ageColor}}/>
+	<form  action="/about" method= "post" onSubmit={this.onclickInfo}>
+		<input type="text" name="name" placeholder="Enter your name" value={this.state.name} onChange={this.onNameChange} style={{borderColor:nameColor}}/>
+		<input type="number" name="age" placeholder="Enter your age" value={this.state.age} onChange={this.onAgeChange} style={{borderColor:ageColor}}/>
 		<input className="btn btn-primary" type="submit" value="say HI" />
 		<p className="alert alert-warning text-center">{this.state.nameMessage}  {this.state.ageMessage}</p>
 		

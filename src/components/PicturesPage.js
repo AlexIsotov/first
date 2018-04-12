@@ -18,7 +18,7 @@ export class PicturesPage extends Component {
     return (
 <div >
 	<div >
-		<div className="jumbotron  ">
+		<div className="jumbotron m-0 ">
 			<App  auth={auth}/>
 				<h1 className="display-1 text-center"> Watch this funny photos
 				</h1>

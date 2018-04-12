@@ -20,7 +20,7 @@ export class AboutPage extends Component {
  
     return (
 <div>
-		<h1 className="jumbotron display-1 text-center"> About page</h1>
+		<h1 className="jumbotron display-1 text-center m-0"> About page</h1>
 		<NavBar />
 		<InputAboutPage />
 		<h2 className="alert alert-success text-center"> Created by Richard the Dog aka Gangsta dog</h2>
