@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {MainPage} from './components/MainPage.js';
-import {AboutPage} from './components/AboutPage.js';
-import {PicturesPage} from './components/PicturesPage.js';
-import {Router, Route, Switch} from 'react-router-dom';
-import Callback from './components/Callback';
+import MainPage from './components/pages/MainPage';
+import AboutPage from './components/pages/AboutPage.js';
+import PicturesPage from './components/pages/PicturesPage.js';
+import {Router, Route, Switch, Redirect} from 'react-router-dom';
+
 import Auth from './components/Auth.js';
 import history from './components/history';
 const auth = new Auth();
@@ -20,16 +20,14 @@ export class MainRoutes extends Component {
     <Router history={history} >
       <Switch>
         <Route exact path="/" render={(props) => {handleAuthentication(props); return <MainPage auth={auth} {...props} />}} />
-        <Route path="/home" render={(props) => <MainPage auth={auth} {...props} />} />
-		<Route path="/about" render={(props) => <AboutPage  />} />
-		<Route path="/pic" render={(props) => <PicturesPage auth={auth} {...props} />} />
+        <Route exact path="/home" render={(props) => <MainPage auth={auth} {...props} />} />
+		<Route exact path="/about" render={(props) => <AboutPage  />} />
+		<Route exact path="/pic" render={(props) => <PicturesPage auth={auth} {...props} />} />
        
-		<Route path="/links" render={(props) => {
-          handleAuthentication(props);
-          return <Callback {...props} /> 
-        }}/>
+		<Route  path="*" render={(props) => <Redirect to="/" />} />
       </Switch>
     </Router>
   );
 }}
 
+export default MainRoutes;

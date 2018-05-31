@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
-import {MainRoutes} from './MainRoutes'
+import 'bootstrap/dist/css/bootstrap.css';
+
+import App from './App'
 
 
-ReactDOM.render(<MainRoutes />, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(<App />, document.getElementById('root'));
+
