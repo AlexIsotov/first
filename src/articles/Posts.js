@@ -64,9 +64,17 @@ return (
        <div className="container">
 			<section>
 				<form onSubmit={this.handleSubmit}>
-				<input type="text" placeholder="Title" name="title" onChange={this.handleChange} value={this.state.title}/>
-				<input type="text" placeholder="New story" name="story" onChange={this.handleChange} value={this.state.story}/>
-				<button> Add item</button>
+					<div className="form-group">
+						<label>Topic:</label>
+						<input  id="inputTopic" className="form-control" type="text" placeholder="Title" name="title" onChange={this.handleChange} value={this.state.title}/>
+					</div>
+					<div className="form-group">
+						<label>Story:</label>
+						<textarea id="inputStory" className="form-control form-control-lg" type="text" placeholder="New story" name="story" onChange={this.handleChange} value={this.state.story}/>
+					</div>
+					<div className="d-flex justify-content-end">
+					<button className="btn btn-secondary btn-lg"> Post</button>
+					</div>
 				</form>
 			</section>
 			<section>
