@@ -4,10 +4,10 @@ import history from './history';
 export default class Auth {
 	requestedScopes = 'openid write:posts read:posts';	
     auth0 = new auth0.WebAuth({
-    domain: 'maxmyd.auth0.com',
-    clientID: 'F92Ql33DSWRRsFuqzjRPmoaKh7x90x1v',
+    domain: '',
+    clientID: '',
     redirectUri: 'http://localhost:3000',
-    audience: 'http://r-blog.ua.ua',
+    audience: '',
     responseType: 'token id_token',
     scope: this.requestedScopes
   });
