@@ -34,11 +34,19 @@ export class InputAboutPage extends Component {
  let nameColor=this.state.nameValid===true?"green":"tomato";
  let ageColor=this.state.ageValid===true?"green":"tomato";
     return (
-<div className="formAbout">
+	<div className="container">
 	<form  action="/about" method= "post" onSubmit={this.onclickInfo}>
-		<input type="text" name="name" placeholder="Enter your name" value={this.state.name} onChange={this.onNameChange} style={{borderColor:nameColor}}/>
-		<input type="number" name="age" placeholder="Enter your age" value={this.state.age} onChange={this.onAgeChange} style={{borderColor:ageColor}}/>
-		<input className="btn btn-primary" type="submit" value="say HI" />
+		<div className="form-row">
+			<div className="col">
+				<input className="form-control" type="text" name="name" placeholder="Enter your name" value={this.state.name} onChange={this.onNameChange} style={{borderColor:nameColor}}/>
+			</div>
+			<div className="col">
+				<input className="form-control" type="number" name="age" placeholder="Enter your age" value={this.state.age} onChange={this.onAgeChange} style={{borderColor:ageColor}}/>
+			</div>
+		</div>
+		<div className="d-flex justify-content-center">
+		<button className="btn btn-lg btn-primary mt-1">say HI</button>
+		</div>
 		<p className="alert alert-warning text-center">{this.state.nameMessage}  {this.state.ageMessage}</p>
 		
 	</form>

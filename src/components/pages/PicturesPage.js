@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {DemoCarousel} from '../../demoCarousel';
 import puppy from '../../pic/24.jpg';
+import NavBar from '../navBar';
 
 export class PicturesPage extends Component {
    
@@ -10,7 +11,7 @@ export class PicturesPage extends Component {
     
 	return (
 	<div >
-	
+		<NavBar />
 		<h1 className="text-center"> Watch this funny photos</h1>
 	
 	{isAuthenticated()&&(

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InputAboutPage from '../InputAboutPage.js';
+import NavBar from '../navBar';
 
 export class AboutPage extends Component {
   constructor(props){
@@ -17,6 +18,7 @@ export class AboutPage extends Component {
  
     return (
 <div>
+		<NavBar />
 		<h1 className="text-center"> About page</h1>
 		<InputAboutPage />
 		<h2 className="alert alert-success text-center"> Created by Richard the Dog aka Gangsta dog</h2>

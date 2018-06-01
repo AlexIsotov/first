@@ -10,7 +10,7 @@ export class NavBar extends Component {
   render() {
     return (
 		<Nav tabs className= "d-flex bg-light">
-			<NavLink href="/home"> Home</NavLink>
+			<NavLink href="/"> Home</NavLink>
 			<NavLink href="/pic"> Pictures</NavLink>
 			<NavLink href="/about"> About</NavLink>
 			

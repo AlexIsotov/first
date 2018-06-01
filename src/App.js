@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainRoutes from './MainRoutes';
-import NavBar from './components/navBar'
+
 
 export class App extends Component {
 
@@ -14,7 +14,7 @@ export class App extends Component {
 			<div className="jumbotron m-0 ">
 				<h1 className="display-3 text-center"> Richards blog </h1>
 			</div>
-			<NavBar />
+			
 			<MainRoutes />
          </div>
 	);

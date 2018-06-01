@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import firebase from './firebase.js';
+import ShowPosts from './showPosts';
 
 export class Posts extends Component {
   constructor(props){
 		super(props);
 		this.state={
+			hidden:true,
 			story:'',
 			title:'',
 			articles:[]
@@ -47,23 +49,15 @@ export class Posts extends Component {
 		})
 	})
 }
-	
-	removeItem(itemId){
-		const itemRef=firebase.database().ref('articles/'+(itemId));
+	createPost=()=>{
+		this.setState({hidden: this.state.hidden === false ? true : false});
+	}
 		
-		itemRef.remove();
-	}	
 render() {
-
-	
-	
-return (
-	
-    <div>
-	 
-       <div className="container">
-			<section>
-				<form onSubmit={this.handleSubmit}>
+const{userHasScopes} = this.props.auth;	
+const newPost=	 <div className="container">
+			
+			<form onSubmit={this.handleSubmit}>
 					<div className="form-group">
 						<label>Topic:</label>
 						<input  id="inputTopic" className="form-control" type="text" placeholder="Title" name="title" onChange={this.handleChange} value={this.state.title}/>
@@ -73,30 +67,31 @@ return (
 						<textarea id="inputStory" className="form-control form-control-lg" type="text" placeholder="New story" name="story" onChange={this.handleChange} value={this.state.story}/>
 					</div>
 					<div className="d-flex justify-content-end">
-					<button className="btn btn-secondary btn-lg"> Post</button>
+					<button className="btn btn-dark btn-lg">Post</button>
 					</div>
 				</form>
-			</section>
-			<section>
-				<div>
-					<ul>
-					{
-						this.state.articles.map((article)=>{
-							return(
-							<li key={article.id}>
-							<h3>{article.title}</h3>
-							<p>{article.story}</p>
-							<button onClick={()=>this.removeItem(article.id)}>Remove</button>
-							</li>
-							)
-					})}
-					</ul>
-				</div>
-			</section>
-	   </div>	
+		</div>	
+return (
+	
+    <div> 
+	{userHasScopes(['write:posts'])&&(
+		<div className="d-flex justify-content-end">
+			<button className="btn btn-dark mr-2" onClick={this.createPost}> New post</button>
+		</div>
+		)}
+		
+			{this.state.hidden?'': newPost}
+	  		
+		<div>
+			<ShowPosts articles={this.state.articles} auth={this.props.auth}/>
+		</div>
+			
+			
+	   	
 	</div>
     );
   }
 }
 
 export default Posts;
+

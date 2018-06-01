@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import {Articles} from '../../articles/Articles';
 import Posts from '../../articles/Posts';
+import NavBar from '../navBar';
 
 export class MainPage extends Component {
  
   render() {
-const{isAuthenticated} = this.props.auth;
+const{isAuthenticated, userHasScopes} = this.props.auth;
     
 	return (
 	<div>
-		
+		<NavBar />
 		<h1 className = "text-center">Stories</h1>
 	
-	{isAuthenticated()&&(
+	{isAuthenticated()&& (
 		<div>
-			<Posts />
+			<Posts auth={this.props.auth}/>
 		</div>
 		)}
 	
