@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import ConstructorPosts from './constructorPosts';
 
 export class ShowPosts extends Component {
-  	
+
 render() {
 
 const {articles}=this.props;	
-const{userHasScopes} = this.props.auth;		
+	
 return (
 	
     <div>
 	 
-					<ul>
-					{
+					
+					{  
 						articles.slice(0).reverse().map((article)=>{
 							return(
-							<li key={article.id} style={{listStyle:'none'}}>
-								<ConstructorPosts articleSkeleton={article} auth={this.props.auth}/>
-							</li>
+							<div key={article.id} >
+								
+								<ConstructorPosts isOpened={articles[articles.length-1].id} articleSkeleton={article} auth={this.props.auth}/>
+							</div>
 							)
 					})}
-					</ul>
+					
 			
 	</div>
     );

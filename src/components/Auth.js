@@ -2,11 +2,13 @@ import auth0 from 'auth0-js';
 import history from './history';
 
 export default class Auth {
-	requestedScopes = 'openid write:posts read:posts';	
+	userProfile;
+	
+	requestedScopes = 'openid profile write:posts read:posts';	
     auth0 = new auth0.WebAuth({
     domain: 'maxmyd.auth0.com',
     clientID: 'F92Ql33DSWRRsFuqzjRPmoaKh7x90x1v',
-    redirectUri: 'http://localhost:3000',
+    redirectUri: 'http://localhost:3000/',
     audience: 'http://r-blog.ua.ua',
     responseType: 'token id_token',
     scope: this.requestedScopes
@@ -17,7 +19,8 @@ constructor() {
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);
 	this.userHasScopes = this.userHasScopes.bind(this);
-	
+	this.getAccessToken = this.getAccessToken.bind(this);
+	this.getProfile = this.getProfile.bind(this);
   }
   
   login() {
@@ -48,7 +51,24 @@ constructor() {
     // navigate to the home route
     history.replace('/');
   }
-
+  
+	getAccessToken() {
+    const accessToken = localStorage.getItem('access_token');
+    if (!accessToken) {
+      throw new Error('No access token found');
+    }
+    return accessToken;
+  }
+  
+	getProfile(cb) {
+    let accessToken = this.getAccessToken();
+    this.auth0.client.userInfo(accessToken, (err, profile) => {
+      if (profile) {
+        this.userProfile = profile;
+      }
+      cb(err, profile);
+    });
+  }
   
 	
   logout() {
@@ -57,6 +77,7 @@ constructor() {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
 		localStorage.removeItem('scopes');
+		this.userProfile = null;
     // navigate to the home route
     history.replace('/');
   }

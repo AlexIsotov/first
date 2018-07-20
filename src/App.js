@@ -12,7 +12,7 @@ export class App extends Component {
     return (
 		<div >
 			<div className="jumbotron m-0 ">
-				<h1 className="display-3 text-center"> Richards blog </h1>
+				<h1 className="display-3 text-center "> Richards blog </h1>
 			</div>
 			
 			<MainRoutes />

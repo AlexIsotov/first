@@ -5,7 +5,7 @@ import NavBar from '../navBar';
 export class MainPage extends Component {
  
   render() {
-const{isAuthenticated, userHasScopes} = this.props.auth;
+const{isAuthenticated} = this.props.auth;
     
 	return (
 	<div>
