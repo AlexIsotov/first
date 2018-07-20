@@ -6,10 +6,7 @@ export default class Auth {
 	
 	requestedScopes = 'openid profile write:posts read:posts';	
     auth0 = new auth0.WebAuth({
-    domain: 'maxmyd.auth0.com',
-    clientID: 'F92Ql33DSWRRsFuqzjRPmoaKh7x90x1v',
-    redirectUri: 'http://localhost:3000/',
-    audience: 'http://r-blog.ua.ua',
+   
     responseType: 'token id_token',
     scope: this.requestedScopes
   });

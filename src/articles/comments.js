@@ -28,8 +28,10 @@ export class Comments extends Component {
 	}
 	handleCommentSubmit(itemId, e){
 		e.preventDefault();
-		
 		const itemCommentRef=firebase.database().ref('articles/'+(itemId)+'/comment');
+		let a=document.getElementById('Comment');
+		this.setState({comment:a.value}, ()=>{
+		
 		const comments={
 			comment:this.state.comment,
 			commentDate:this.state.commentDate,
@@ -43,7 +45,7 @@ export class Comments extends Component {
 			comment:'',
 			commentDate:'',
 		})
-		
+		});
 	}
 	
 	showCommentBody=()=> {
@@ -86,12 +88,7 @@ export class Comments extends Component {
 	})
 	
 	}
-	cli=()=>{
-		let a=document.getElementById('Comment');
-		this.setState({comment:a.value}, ()=>{console.log(this.state.comment)});
-		console.log(a.value);
-		
-	}
+	
 render() {
 	const { profile } = this.state;
 	const {article}=this.props;
@@ -128,7 +125,6 @@ render() {
 										</div>
 									</div>
 								</form>
-								<button onClick={this.cli}>on</button>
 						</div>
 
 	return (
