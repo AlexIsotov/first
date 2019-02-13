@@ -16,21 +16,20 @@ export class Comments extends Component {
 	}
 	handleCommentChange(e){
 		e.preventDefault();
-		let commentDate=new Date().toLocaleString();
 		let val=e.target.value;
 		if(val.length<1000){
 		this.setState({
 			[e.target.name]:val,
-			commentDate:commentDate,
-		});}
+			});}
 		else {alert('Chill! You have only 1000 characters for comment! Enjoy!')}
 		
 	}
 	handleCommentSubmit(itemId, e){
 		e.preventDefault();
 		const itemCommentRef=firebase.database().ref('articles/'+(itemId)+'/comment');
+		let commentDate=new Date().toLocaleString();
 		let a=document.getElementById('Comment');
-		this.setState({comment:a.value}, ()=>{
+		this.setState({comment:a.value, commentDate:commentDate,}, ()=>{
 		
 		const comments={
 			comment:this.state.comment,
@@ -77,7 +76,8 @@ export class Comments extends Component {
 				nickname: items[item].nickname,
 				avatar: items[item].avatar,
 				sub: items[item].sub,
-				editDate:items[item].editDate
+				editDate:items[item].editDate,
+				deleteDate:items[item].deleteDate
 			});
 			
 		}

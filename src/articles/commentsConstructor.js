@@ -15,6 +15,8 @@ export class CommentsConstructor extends Component {
 			modal:false,
 			editDate:null,
 			btnConfirm:true,
+			color:null,
+			badge:false
 			}
 	}
 	handleCommentChange=(e)=>{
@@ -47,15 +49,17 @@ export class CommentsConstructor extends Component {
 	}
 		
 	del(itemId, commentId){
+		let deleteDateComment=new Date().toLocaleString();
 		const itemCommentRef=firebase.database().ref('articles/'+(itemId)+'/comment/'+(commentId));
 		let confirmation=window.confirm('Are u sure want to delete this comment?');
 		if (confirmation){
 			const comments={
 			comment:'This comment was deleted',
-			commentDate:'',
-			sub:'deleted!'
+			sub:'deleted!',
+			deleteDate: deleteDateComment
 			};
 		itemCommentRef.update(comments);}
+		this.setState({color:null, badge:false})
 	}
 	
 	toggleModal(a){
@@ -77,21 +81,28 @@ export class CommentsConstructor extends Component {
 	quote(e){
 		const quoComment=document.getElementById('Comment');
 		quoComment.focus();
-		quoComment.value=quoComment.value+"\n>>`` "+e+"``\n";
+		quoComment.value=quoComment.value+'\n>>" '+e+'" \n';
 		
 	}
+	 componentDidMount(){
+		 if(~this.props.comment.comment.indexOf('@'+this.props.profile.nickname))
+		 {this.setState({color:'teal', badge:true})}
+	 }
 render() {
 	const {profile, article, comment}=this.props;
 		
 	return (
 				<div className="bg-light mt-1">
-				<div className="border">			
+				<div className="border">				
 														<div className="d-flex justify-content-between border-bottom pt-1" style={{background:"gainsboro"}}>
 															<div className="d-flex justify-content-start">
 																	<img height={25} width={25} src={comment.avatar} alt="profile" className="rounded-circle"/>
-																	<h6>{comment.nickname}</h6>
+																	<h6>{comment.nickname}
+																	{this.state.badge===true && <span data-toggle="tooltip" data-placement="bottom" title="This user mentioned u in comment" className="badge badge-pill badge-warning">@</span>}
+																	</h6>
 															</div>	
 															<div className="d-flex justify-content-end">
+																	
 																	{profile.sub===comment.sub &&(
 																	<div>
 																		<button data-toggle="tooltip" data-placement="bottom" title="Delete" className="btn btn-outline-dark btn-sm mx-1" onClick={()=>this.del(article.id, comment.id)}><img src={trash} height={15} width={15} alt="trash"/></button>
@@ -107,12 +118,18 @@ render() {
 														</div>
 														<div className="d-flex flex-column">
 															<div className="d-flex">
-																<p className="ml-1" dangerouslySetInnerHTML={{ __html: comment.comment.replace(/\n/g, '<br>') }}></p>
+															<p className="ml-1" dangerouslySetInnerHTML={{ __html: comment.comment.replace(/\n/g, '<br>') }} style={{color:this.state.color}}></p>
 															</div>
-															{((comment.editDate) &&(comment.sub!=="deleted!"))&&(
-															<div className="d-flex">
-																<p className="text-muted ml-4"><small>Edited:{comment.editDate}</small></p>
-															</div>)}
+															{(comment.sub!=="deleted!")?
+																((comment.editDate)&&(
+																<div className="d-flex">
+																	<p className="text-muted ml-4"><small>Edited:{comment.editDate}</small></p>
+																</div>))
+																:
+																((comment.deleteDate)&&(
+																<div className="d-flex">
+																	<p className="text-muted ml-4"><small>Deleted:{comment.deleteDate}</small></p>
+																</div>))}
 														</div>
 													
 										<Modal isOpen={this.state.modal} toggle={()=>this.toggleModal(comment)} className={this.props.className}>

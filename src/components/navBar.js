@@ -11,7 +11,7 @@ export class NavBar extends Component {
     return (
 		<Nav tabs className= "d-flex bg-light">
 			<NavLink href="/" > Home</NavLink>
-			<NavLink href="/about" > About</NavLink>
+			<NavLink href="/about" > Info</NavLink>
 			
 			
 			<div className="ml-auto">

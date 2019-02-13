@@ -104,6 +104,17 @@ export class Posts extends Component {
 	})
 	
 }
+componentWillMount() {
+		this.setState({ profile: {} });
+		const { userProfile, getProfile } = this.props.auth;
+		if (!userProfile) {
+		  getProfile((err, profile) => {
+			this.setState({ profile });
+		  });
+		} else {
+		  this.setState({ profile: userProfile });
+		}
+	  }  
 	toggleModal=()=> {
 		let datePost=new Date().toLocaleString();
 	
@@ -156,7 +167,7 @@ const newPost=<Modal isOpen={this.state.modal} toggle={this.toggleModal} classNa
 						<button className="btn btn-secondary btn-lg btn-block" onClick={this.toggleModal}>Cancel</button>
 					</ModalFooter>
 				</Modal>
-
+const { profile } = this.state; 
 return (
 	
     <div> 
@@ -169,7 +180,16 @@ return (
 			{newPost}
 		</div>
 		)}
-		 
+		<div className="baddge">
+			<div className="d-flex justify-content-start border border-secondary bg-light rounded">
+				<div>
+					<img className="rounded" src={this.state.profile.picture} alt="avatar" height={30} width={30}/>
+				</div>
+				<div>
+					<h5><small>Hello{", "+this.state.profile.nickname+"!"}</small></h5>
+				</div>
+			</div>
+			</div> 
 	  	<div>
 			<ShowPosts articles={this.state.articles} opened={this.state.articles} auth={this.props.auth}/>
 		</div>
