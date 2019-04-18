@@ -9,7 +9,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 export class CommentsConstructor extends Component {
   constructor(props){
 		super(props);
-		
+
 		this.state={
 			comment:'',
 			modal:false,
@@ -28,13 +28,13 @@ export class CommentsConstructor extends Component {
 			btnConfirm:false,
 		});}
 		else {alert('Chill! You have only 1000 characters for comment! Enjoy!')}
-		
+
 	}
 	handleCommentSubmit(itemId, commentId, e){
-		
+
 		e.preventDefault();
 		const itemCommentRef=firebase.database().ref('articles/'+(itemId)+'/comment/'+(commentId));
-		
+
 		const comments={
 			comment:this.state.comment,
 			editDate:this.state.editDate,
@@ -45,9 +45,9 @@ export class CommentsConstructor extends Component {
 			editDate:'',
 			modal: !this.state.modal
 		})
-		
+
 	}
-		
+
 	del(itemId, commentId){
 		let deleteDateComment=new Date().toLocaleString();
 		const itemCommentRef=firebase.database().ref('articles/'+(itemId)+'/comment/'+(commentId));
@@ -61,7 +61,7 @@ export class CommentsConstructor extends Component {
 		itemCommentRef.update(comments);}
 		this.setState({color:null, badge:false})
 	}
-	
+
 	toggleModal(a){
     let editDateComment=new Date().toLocaleString();
 	this.setState({
@@ -70,19 +70,19 @@ export class CommentsConstructor extends Component {
 	  btnConfirm: true,
 	  editDate:editDateComment
 	  });
-	  
+
 	}
 	reply(e){
 		const repComment=document.getElementById('Comment');
 		repComment.focus();
 		repComment.value=repComment.value+"\n @"+ e+"\n";
-	
+
 	}
 	quote(e){
 		const quoComment=document.getElementById('Comment');
 		quoComment.focus();
 		quoComment.value=quoComment.value+'\n>>" '+e+'" \n';
-		
+
 	}
 	 componentDidMount(){
 		 if(~this.props.comment.comment.indexOf('@'+this.props.profile.nickname))
@@ -90,48 +90,45 @@ export class CommentsConstructor extends Component {
 	 }
 render() {
 	const {profile, article, comment}=this.props;
-		
 	return (
 				<div className="bg-light mt-1">
-				<div className="border">				
-														<div className="d-flex justify-content-between border-bottom pt-1" style={{background:"gainsboro"}}>
-															<div className="d-flex justify-content-start">
-																	<img height={25} width={25} src={comment.avatar} alt="profile" className="rounded-circle"/>
-																	<h6>{comment.nickname}
-																	{this.state.badge===true && <span data-toggle="tooltip" data-placement="bottom" title="This user mentioned u in comment" className="badge badge-pill badge-warning">@</span>}
-																	</h6>
-															</div>	
-															<div className="d-flex justify-content-end">
-																	
-																	{profile.sub===comment.sub &&(
-																	<div>
-																		<button data-toggle="tooltip" data-placement="bottom" title="Delete" className="btn btn-outline-dark btn-sm mx-1" onClick={()=>this.del(article.id, comment.id)}><img src={trash} height={15} width={15} alt="trash"/></button>
-																		<button data-toggle="tooltip" data-placement="bottom" title="Edit" className="btn btn-outline-dark btn-sm mx-1" onClick={(e)=>this.toggleModal(comment)}><img src={Pencil} height={15} width={15} alt="pencil" /></button> 
-																	</div>)}
-																	<div>
-																		<button data-toggle="tooltip" data-placement="bottom" title="Quote" className="btn btn-outline-dark btn-sm mx-1" onClick={()=>this.quote(comment.comment)}><img src={Quote} height={15} width={15} alt="quote"/></button>
-																		<button data-toggle="tooltip" data-placement="bottom" title="Reply" className="btn btn-outline-dark btn-sm mx-1" onClick={()=>this.reply(comment.nickname)}><img src={Reply} height={15} width={15} alt="reply"/></button>
-																	</div>
+				    <div className="border">
+										<div className="d-flex justify-content-between border-bottom pt-1" style={{background:"gainsboro"}}>
+											<div className="d-flex justify-content-start">
+													<img height={25} width={25} src={comment.avatar} alt="profile" className="rounded-circle"/>
+													<h6>{comment.nickname}
+													{this.state.badge===true && <span data-toggle="tooltip" data-placement="bottom" title="This user mentioned u in comment" className="badge badge-pill badge-warning">@</span>}
+													</h6>
+											</div>
+											<div className="d-flex justify-content-end">
 
-																	<p className="text-muted"><small>{comment.commentDate}</small></p>
-															</div>
-														</div>
-														<div className="d-flex flex-column">
-															<div className="d-flex">
-															<p className="ml-1" dangerouslySetInnerHTML={{ __html: comment.comment.replace(/\n/g, '<br>') }} style={{color:this.state.color}}></p>
-															</div>
-															{(comment.sub!=="deleted!")?
-																((comment.editDate)&&(
-																<div className="d-flex">
-																	<p className="text-muted ml-4"><small>Edited:{comment.editDate}</small></p>
-																</div>))
-																:
-																((comment.deleteDate)&&(
-																<div className="d-flex">
-																	<p className="text-muted ml-4"><small>Deleted:{comment.deleteDate}</small></p>
-																</div>))}
-														</div>
-													
+													{profile.sub===comment.sub &&(
+													<div>
+														<button data-toggle="tooltip" data-placement="bottom" title="Delete" className="btn btn-outline-dark btn-sm mx-1" onClick={()=>this.del(article.id, comment.id)}><img src={trash} height={15} width={15} alt="trash"/></button>
+														<button data-toggle="tooltip" data-placement="bottom" title="Edit" className="btn btn-outline-dark btn-sm mx-1" onClick={(e)=>this.toggleModal(comment)}><img src={Pencil} height={15} width={15} alt="pencil" /></button>
+													</div>)}
+													<div>
+														<button data-toggle="tooltip" data-placement="bottom" title="Quote" className="btn btn-outline-dark btn-sm mx-1" onClick={()=>this.quote(comment.comment)}><img src={Quote} height={15} width={15} alt="quote"/></button>
+														<button data-toggle="tooltip" data-placement="bottom" title="Reply" className="btn btn-outline-dark btn-sm mx-1" onClick={()=>this.reply(comment.nickname)}><img src={Reply} height={15} width={15} alt="reply"/></button>
+													</div>
+													<p className="text-muted"><small>{comment.commentDate}</small></p>
+											</div>
+										</div>
+										<div className="d-flex flex-column">
+											<div className="d-flex">
+											<p className="ml-1" dangerouslySetInnerHTML={{ __html: comment.comment.replace(/\n/g, '<br>') }} style={{color:this.state.color}}></p>
+											</div>
+											{(comment.sub!=="deleted!")?
+												((comment.editDate)&&(
+												<div className="d-flex">
+													<p className="text-muted ml-4"><small>Edited:{comment.editDate}</small></p>
+												</div>))
+												:
+												((comment.deleteDate)&&(
+												<div className="d-flex">
+													<p className="text-muted ml-4"><small>Deleted:{comment.deleteDate}</small></p>
+												</div>))}
+										</div>
 										<Modal isOpen={this.state.modal} toggle={()=>this.toggleModal(comment)} className={this.props.className}>
 											<ModalHeader toggle={()=>this.toggleModal(comment)}>Edit comment</ModalHeader>
 											<ModalBody>
@@ -147,12 +144,10 @@ render() {
 												<button className="btn btn-outline-secondary btn-lg btn-block" onClick={()=>this.toggleModal(comment)}>Cancel</button>
 											</ModalFooter>
 										</Modal>
-												</div>				
-							
+						</div>
 				</div>
     );
   }
 }
 
 export default CommentsConstructor;
-

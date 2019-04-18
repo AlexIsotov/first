@@ -14,11 +14,11 @@ goTo(route) {
   }
 
   render() {
-	const { isAuthenticated } = this.props.auth;  
-	
-	
+	const { isAuthenticated } = this.props.auth;
+
+
     return (
-		<div >
+		      <div >
             {
               !isAuthenticated() && (
                   <button className="btn btn-outline-primary mr-2" onClick={this.login.bind(this)} >
