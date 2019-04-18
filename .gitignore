@@ -9,7 +9,7 @@
 # production
 /build
 src/articles/firebase.js
-src/articles/components/Auth.js
+src/components/Auth.js
 
 # misc
 .DS_Store
