@@ -6,7 +6,7 @@ export class MainPage extends Component {
  
   render() {
 const{isAuthenticated} = this.props.auth;
-    
+   
 	return (
 	<div>
 		<NavBar />

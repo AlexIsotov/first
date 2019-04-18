@@ -20,7 +20,7 @@ export class MainRoutes extends Component {
     <Router history={history} >
       <Switch>
         <Route exact path="/" render={(props) => {handleAuthentication(props); return <MainPage auth={auth} {...props} />}} />
-		<Route exact path="/about" render={(props) => <AboutPage  />} />
+		<Route exact path="/about" render={(props) => {handleAuthentication(props); return <AboutPage auth={auth} {...props} />}} />
 		
 		
        
